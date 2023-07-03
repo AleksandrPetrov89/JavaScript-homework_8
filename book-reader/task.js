@@ -21,18 +21,20 @@ function fontSizeChange (event) {
 };
 
 function colorChange (event) {
-    event.preventDefault();
-    event.currentTarget.querySelector(".color_active").classList.remove("color_active");
-    event.target.classList.add("color_active");
-    let text = "";
-    if (event.target.dataset.textColor) {
-        book.classList.remove("book_color-gray", "book_color-whitesmoke", "book_color-black");
-        text = "book_color-" + event.target.dataset.textColor;
-        book.classList.add(text);
-    };
-    if (event.target.dataset.bgColor) {
-        book.classList.remove("book_bg-gray", "book_bg-white", "book_bg-black");
-        text = "book_bg-" + event.target.dataset.bgColor;
-        book.classList.add(text);
+    if (event.target.tagName === "A") {
+        event.preventDefault();
+        event.currentTarget.querySelector(".color_active").classList.remove("color_active");
+        event.target.classList.add("color_active");
+        let text = "";
+        if (event.target.dataset.textColor) {
+            book.classList.remove("book_color-gray", "book_color-whitesmoke", "book_color-black");
+            text = "book_color-" + event.target.dataset.textColor;
+            book.classList.add(text);
+        };
+        if (event.target.dataset.bgColor) {
+            book.classList.remove("book_bg-gray", "book_bg-white", "book_bg-black");
+            text = "book_bg-" + event.target.dataset.bgColor;
+            book.classList.add(text);
+        };
     };
 };
